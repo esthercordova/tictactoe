@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Code tac Toe</title>
+
+      <!-- <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script> -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+      
+      <script type="text/javascript">
+  $( document ).ready(function() {
+    let currentScore;
+    let previousScores;
+
+    let playerTurn;
+
+    let newGame = function(){
+
+    };
+
+    let makeMove = function(){
+
+    };
+
+    let board = [
+      '<div id="a"> <xmp> <div id="a"></div> </xmp> </div>',
+      '<div id="b"> <xmp> <div id="b"></div> </xmp> </div>',
+      '<div id="c"> <xmp> <div id="c"></div> </xmp> </div>',
+      '<div id="d"> <xmp> <div id="d"></div> </xmp> </div>',
+      '<div id="e"> <xmp> <div id="e"></div> </xmp> </div>',
+      '<div id="f"> <xmp> <div id="f"></div> </xmp> </div>',
+      '<div id="g"> <xmp> <div id="g"></div> </xmp> </div>',
+      '<div id="h"> <xmp> <div id="h"></div> </xmp> </div>',
+      '<div id="i"> <xmp> <div id="i"></div> </xmp> </div>',
+    ];
+
+    var names = ['top-left', 'top-center', 'top-right',
+           'middle-left', 'middle-center', 'middle-right',
+           'bottom-left', 'bottom-center', 'bottom-right',];
+
+    for (var i = 0; i < board.length; i++) {
+      $("#"+ names[i]).html(board[i]);
+    };
+
+
+    let determentEndGame = function (){
+
+    };
+
+  });
+</script>
+
+      <style media="screen">
+
+        #board-container {
+          width: 906px;
+        }
+
+        .board {
+          width:300px;
+          border: 1px solid black;
+          float: left;
+        }
+
+        h1 {
+          color: red
+        }
+      </style>
+
+    </head>
+
+    <body class="container-fluid">
+
+
+    <h1>Code Tac Toe</h1>
+
+    <div id="board-container">
+      <div class="board" id="top-left"></div>
+      <div class="board" id="top-center"></div>
+      <div class="board" id="top-right"></div>
+      <div class="board" id="middle-left"></div>
+      <div class="board" id="middle-center"></div>
+      <div class="board" id="middle-right"></div>
+      <div class="board" id="bottom-left"></div>
+      <div class="board" id="bottom-center"></div>
+      <div class="board" id="bottom-right"></div>
+    </div>
+
+    <input type="text" name="make-move" placeholder="Make your Move">
+    <input type="button" name="make-move" value="Submit">
+    </body>
+</html>
