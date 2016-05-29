@@ -7,6 +7,35 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 
+	<script type="text/javascript">
+	$( document ).ready(function() {
+
+
+
+	
+	let playerMove = true;
+
+	$(".square").click(function () {
+
+			if(playerMove == true) {
+		
+    			$(this).css('background-color','#EE178C');
+				playerMove = false;
+				}
+
+			else{
+				$(this).css('background-color','#888888');
+				playerMove = true; 	
+				}
+	});
+
+
+	});	
+	
+
+
+	</script>
+
 </head>
 <body>
 	<h1>Code Tac Toe</h1>
@@ -28,6 +57,8 @@
         <td class="square" id='bottom-right'></td>
       </tr>
     </table>
+
+
   </div>
 </body>
 </html>
