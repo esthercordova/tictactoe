@@ -14,26 +14,47 @@
 
 	
 	let playerMove = true;
+	//0 is when you havent clicked
+	let boardState = {
+		'top-left': 'unclicked',
+		'top-center': 'unclicked',
+		'top-right': 'unclicked',
+		'middle-left': 'unclicked',
+		'middle-center': 'unclicked',
+		'middle-right': 'unclicked',
+		'bottom-left': 'unclicked',
+		'bottom-center': 'unclicked',
+		'bottom-right': 'unclicked',
+	};
 
 	$(".square").click(function () {
+
+		if(boardState[this.id] == 'unclicked') {
 
 			if(playerMove == true) {
 		
     			$(this).css('background-color','#EE178C');
 				playerMove = false;
+				console.log(boardState[this.id] = 'clicked');
 				}
 
 			else{
 				$(this).css('background-color','#888888');
-				playerMove = true; 	
+				playerMove = true;
+				console.log(boardState[this.id] = 'clicked')
+
 				}
+			}
+			else {
+				console.log("this has been clicked before");
+			}
+			console.log(boardState)
+
 	});
 
 
+
 	});	
-	
-
-
 	</script>
 
 </head>
