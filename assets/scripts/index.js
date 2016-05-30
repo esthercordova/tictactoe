@@ -3,7 +3,10 @@ $( document ).ready(function() {
   
   let boardState;
 
+  let activeGame = false;
+
   let newGameBegin = function(){
+      activeGame = true;
       boardState = {
         'top-left': 'unclicked',
         'top-center': 'unclicked',
@@ -153,33 +156,34 @@ $( document ).ready(function() {
 
   // make moves and color the square accordningly
   $(".square").click(function () {
+    if (activeGame == true) {
+        if(boardState[this.id] == 'unclicked') {
 
-    if(boardState[this.id] == 'unclicked') {
+          if(playerMove == 'o') {
+        
+              $(this).css('background-color','#EE178C');
+            boardState[this.id] = 'o';
+            playerMove = 'x';
+            }
 
-      if(playerMove == 'o') {
+          else{
+            $(this).css('background-color','#888888');
+            boardState[this.id] = 'x';
+            playerMove = 'o';
+
+            }
+          }
+          else {
+            console.log("this has been clicked before");
+          }
     
-          $(this).css('background-color','#EE178C');
-        boardState[this.id] = 'o';
-        playerMove = 'x';
-        }
-
-      else{
-        $(this).css('background-color','#888888');
-        boardState[this.id] = 'x';
-        playerMove = 'o';
-
-        }
-      }
-      else {
-        console.log("this has been clicked before");
-      }
-    
-      checkBoardGame();
-      console.log('The winner is ' + winner)
-      console.log('Its this players turn ' + playerMove);
-      console.log(boardState);
-       $('#showPlayersTurn').html(playerMove);
-       endGame();
+          checkBoardGame();
+          console.log('The winner is ' + winner)
+          console.log('Its this players turn ' + playerMove);
+          console.log(boardState);
+           $('#showPlayersTurn').html(playerMove);
+           endGame();
+          };
 
   });
 
@@ -191,7 +195,8 @@ $( document ).ready(function() {
     } else {
         scoreX += 1;
     }
-    winner = 'notonotx';
+    winner = 'tie';
+    activeGame = false;
     console.log("score o is: "+ scoreO +" and score x is " + scoreX);
   }}
 
