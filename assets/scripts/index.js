@@ -28,7 +28,7 @@ $( document ).ready(function() {
 
   newGameBegin();
   
-  let playerMove = true;
+  let playerMove = 'o';
 
   let winner //grey is o pink is x
   
@@ -144,6 +144,7 @@ $( document ).ready(function() {
 
   };
 
+  // check for tie
   let checkTie = function () {
   for (key in boardState) {
     if (boardState[key] == 'unclicked') {
@@ -153,6 +154,7 @@ $( document ).ready(function() {
   return true;
   };
 
+  // make moves and color the square accordningly
   $(".square").click(function () {
 
     if(boardState[this.id] == 'unclicked') {
@@ -167,6 +169,7 @@ $( document ).ready(function() {
       else{
         $(this).css('background-color','#888888');
         playerMove = 'o';
+
         console.log(boardState[this.id] = 'o')
 
         }
@@ -174,9 +177,11 @@ $( document ).ready(function() {
       else {
         console.log("this has been clicked before");
       }
-      console.log(boardState);
+    
       checkBoardGame();
-      console.log('The winner is ' + winner);
+      console.log('The winner is ' + winner)
+      console.log('Its this players turn ' + playerMove);
+       $('#showPlayersTurn').html(playerMove);
 
   });
 
@@ -188,7 +193,7 @@ $( document ).ready(function() {
 
     $("#newGame").click(function() {
       newGameBegin();
-
     })
+
 
   }); 

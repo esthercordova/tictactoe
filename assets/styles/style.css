@@ -12,3 +12,11 @@ h1 {
 	margin: auto auto;
 	width: 306px;
 }
+
+#playero {
+	color: #EE178C;
+}
+
+#playerx {
+	color: gray;
+}
