@@ -1,10 +1,3 @@
-// 'use strict';
-
-// // user require with a reference to bundle the file and use it in this file
-// // var example = require('./example');
-
-// // use require without a reference to ensure a file is bundled
-// require('./example');
 
 $( document ).ready(function() {
   
@@ -28,9 +21,13 @@ $( document ).ready(function() {
 
   newGameBegin();
   
-  let playerMove = 'o';
+  let playerMove = 'x';
+  $('#showPlayersTurn').html(playerMove);
 
-  let winner //grey is o pink is x
+  let winner; //grey is o pink is x
+
+  let scoreO = 0;
+  let scoreX = 0;
   
   let checkBoardGame = function  (){
 
@@ -162,15 +159,14 @@ $( document ).ready(function() {
       if(playerMove == 'o') {
     
           $(this).css('background-color','#EE178C');
+        boardState[this.id] = 'o';
         playerMove = 'x';
-        console.log(boardState[this.id] = 'x');
         }
 
       else{
         $(this).css('background-color','#888888');
+        boardState[this.id] = 'x';
         playerMove = 'o';
-
-        console.log(boardState[this.id] = 'o')
 
         }
       }
@@ -181,9 +177,23 @@ $( document ).ready(function() {
       checkBoardGame();
       console.log('The winner is ' + winner)
       console.log('Its this players turn ' + playerMove);
+      console.log(boardState);
        $('#showPlayersTurn').html(playerMove);
+       endGame();
 
   });
+
+
+  let endGame = function(){
+    if (winner == 'o' || winner == 'x') {
+      if(winner == 'o'){
+        scoreO += 1;
+    } else {
+        scoreX += 1;
+    }
+    winner = 'notonotx';
+    console.log("score o is: "+ scoreO +" and score x is " + scoreX);
+  }}
 
 
 
