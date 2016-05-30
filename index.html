@@ -9,23 +9,30 @@
 
 	<script type="text/javascript">
 	$( document ).ready(function() {
+	
+	let boardState;
 
+	let newGameBegin = function(){
+			boardState = {
+				'top-left': 'unclicked',
+				'top-center': 'unclicked',
+				'top-right': 'unclicked',
+				'middle-left': 'unclicked',
+				'middle-center': 'unclicked',
+				'middle-right': 'unclicked',
+				'bottom-left': 'unclicked',
+				'bottom-center': 'unclicked',
+				'bottom-right': 'unclicked',
+			};
+
+			$(".square").css('background-color', '#00000');
+	}
+
+	newGameBegin();
 	
 	let playerMove = true;
 
 	let winner //grey is o pink is x
-
-	let boardState = {
-		'top-left': 'unclicked',
-		'top-center': 'unclicked',
-		'top-right': 'unclicked',
-		'middle-left': 'unclicked',
-		'middle-center': 'unclicked',
-		'middle-right': 'unclicked',
-		'bottom-left': 'unclicked',
-		'bottom-center': 'unclicked',
-		'bottom-right': 'unclicked',
-	};
 	
 	let checkBoardGame = function  (){
 
@@ -148,9 +155,6 @@
 	return true;
 	};
 
-	console.log(winner);
-
-
 	$(".square").click(function () {
 
 		if(boardState[this.id] == 'unclicked') {
@@ -180,11 +184,14 @@
 
 
 
-		$( "button" ).click(function() {
+		$( "#signInOrSignUp" ).click(function() {
 		  $( ".test" ).toggle();
 		});
 
+		$("#newGame").click(function() {
+			newGameBegin();
 
+		})
 
 	});	
 	</script>
@@ -192,7 +199,7 @@
 </head>
 <body>
 
-  <button>Sign In or Sign Up</button>
+  <button id="signInOrSignUp">Sign In or Sign Up</button>
 	<div id='sign-in-and-out-section'>
 		
 		<div style="display: none" class="test">
@@ -254,7 +261,6 @@
     </table>
 
     <form>
-	<input type="button" onClick="history.go(0)" value="Restart a Game">
 	<input type="button" id="newGame" value="new Game"> 
 	</form>
 
