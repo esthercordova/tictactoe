@@ -25,9 +25,10 @@ $( document ).ready(function() {
   newGameBegin();
   
   let playerMove = 'x';
+
   $('#showPlayersTurn').html(playerMove);
 
-  let winner; //grey is o pink is x
+  let winner; //grey is x pink is o
 
   let scoreO = 0;
   let scoreX = 0;
@@ -35,7 +36,7 @@ $( document ).ready(function() {
   let checkBoardGame = function  (){
 
     //row 1
-    if( 'unclicked'!= boardState['top-left'] &&
+    if('unclicked'!= boardState['top-left'] &&
      boardState['top-left'] == boardState['top-center'] && 
      boardState['top-center'] == boardState['top-right'] &&
      boardState['top-right'] == boardState['top-left']){
@@ -162,23 +163,18 @@ $( document ).ready(function() {
           if(playerMove == 'o') {
         
               $(this).css('background-color','#EE178C');
-            boardState[this.id] = 'o';
-            playerMove = 'x';
+              boardState[this.id] = 'o';
+              playerMove = 'x';
             }
 
           else{
-            $(this).css('background-color','#888888');
-            boardState[this.id] = 'x';
-            playerMove = 'o';
-
+              $(this).css('background-color','#888888');
+              boardState[this.id] = 'x';
+              playerMove = 'o';
             }
-          }
-          else {
-            console.log("this has been clicked before");
-          }
+          };
     
           checkBoardGame();
-          console.log('The winner is ' + winner)
           console.log('Its this players turn ' + playerMove);
           console.log(boardState);
            $('#showPlayersTurn').html(playerMove);
@@ -195,7 +191,7 @@ $( document ).ready(function() {
     } else {
         scoreX += 1;
     }
-    winner = 'tie';
+    winner = null;
     activeGame = false;
     console.log("score o is: "+ scoreO +" and score x is " + scoreX);
   }}
