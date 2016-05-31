@@ -6,6 +6,7 @@ $( document ).ready(function() {
   let activeGame = false;
 
   let newGameBegin = function(){
+    $('#gameWinner').html('');
       activeGame = true;
       boardState = {
         'top-left': 'unclicked',
@@ -140,7 +141,7 @@ $( document ).ready(function() {
       }
     }
     else if (checkTie()==true) {
-      console.log('tie');
+      $('#gameWinner').html('The game is a tie');
     }
 
   };
@@ -174,9 +175,9 @@ $( document ).ready(function() {
             }
           };
     
-          checkBoardGame();
-          console.log('Its this players turn ' + playerMove);
-          console.log(boardState);
+            checkBoardGame();
+          // console.log('Its this players turn ' + playerMove);
+          // console.log(boardState);
            $('#showPlayersTurn').html(playerMove);
            endGame();
           };
@@ -191,20 +192,27 @@ $( document ).ready(function() {
     } else {
         scoreX += 1;
     }
-    winner = null;
+   
     activeGame = false;
-    console.log("score o is: "+ scoreO +" and score x is " + scoreX);
+    // console.log("score o is: "+ scoreO +" and score x is " + scoreX);
+    if(winner == 'o') {
+      $('#playero').html('Player o : ' + scoreO);
+    } else if (winner == 'x') {
+      $('#playerx').html('Player x : ' + scoreX);
+    }
+    $('#gameWinner').html('The winner is: ' + winner);
+    winner = null;
   }}
 
 
 
-    $( "#signInOrSignUp" ).click(function() {
+    $("#signInOrSignUp" ).click(function() {
       $( ".test" ).toggle();
     });
 
     $("#newGame").click(function() {
       newGameBegin();
-    })
+    });
 
 
   }); 
